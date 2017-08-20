@@ -47,4 +47,33 @@ var triviaQuestion = [
 }];
 
 
-//
+//pseudocode
+
+
+// Start the modal with startModal
+
+// functions
+
+// create the question  list from the object array
+function questionList (){
+
+};
+
+
+function displayQuestion(){
+
+};
+
+function updateScore(){
+
+};
+
+function endingScore(){
+
+};
+
+function startGame(){
+
+};
+
+startGame();
