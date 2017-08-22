@@ -185,6 +185,10 @@ function endingScore(){
  	$("#numTimedOut").text(numTimedOut);
 }
 
+
+//TESTING: starting the game with no modal
+startGame();
+
 // Start the game with startModal
-startModal();
+//startModal();
 });
