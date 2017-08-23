@@ -3,8 +3,8 @@
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Trivia</title>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<link href="https://fonts.googleapis.com/css?family=Pacifico|VT323|Open+Sans+Condensed:300" rel="stylesheet">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/cyborg/bootstrap.min.css">
+<!-- <link href="https://fonts.googleapis.com/css?family=Pacifico|VT323|Open+Sans+Condensed:300" rel="stylesheet"> -->
 <link rel="stylesheet" type="text/css" href="assets/css/style.css">
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -13,17 +13,17 @@
 <body>
 	<div class="container">
 	<div class="jumbotron" id="mainJumboTron">
-		<h2><div id="jumbotronMessage"></div></h2>
-		<h2> Question: </h2><br>
-		<div id="question"></div>
+		<h1><div id="jumbotronMessage"></div></h1>
+		<h2><strong> Question: </strong> <br>
+		<div id="question"></div></h2>
 
-		<h2> Answers: </h2><br>
-		<div id="answers"></div>
+		<h2><strong>Answers: </strong><br>
+		<div id="answers"></div></h2>
 
 		<hr>
 		<div class="text-center">
-		<h3>Time Left:</h3><div id="timer"></div>
-		<h4> Questions Left: </h4><div id="questionsLeft"></div>
+		<h3>Time Left: <span id="timer"></span></h3>
+		<h4> Questions Left: <span id="questionsLeft"></span></h4>
 	</div>
 </div>
 </div>
@@ -38,7 +38,7 @@
 			<div class="row">
 				<div class="col-med-12">
 				Click the start button!
-				<button id="startModalButton" type="button" class="btn btn-default" data-dismiss="modal">Start!</button>
+				<button id="startModalButton" type="button" class="startModalClass btn btn-default" data-dismiss="modal">Start!</button>
 				</div>
 				</div>
 			</div>
@@ -50,24 +50,30 @@
 </div>
 
 <div id="scoreModal" class="modal" role="dialog">
-	<div class="modal-dialog">
+	<div class="modal-dialog modal-lg">
 		<div class="modal-content">
-			<div class="modal-header"><button class="close" type="button" data-dismiss="modal"></button>
+			<div class="modal-header"><button class="close" type="button" data-dismiss="scoreModal"></button>
 			</div>
 
 			<div class="modal-body">
 			<div class="row">
-				<div class="col-med-12">
-				<h2><div id="modalMessage"></div>
-				<p>Correct Answers: <div id="numCorrect"></div></p>
-				<p>ncorrect Answers: <div id="numWrong"></div></p>
-				<p>Answers Timed Out: <div id="numTimedOut"></div></p>
+				<div class="col-md-6">
+					
+					<h3><div id="modalMessage"></div>
+					<p>Correct Answers: <span id="numCorrect"></span></p>
+					<p>Incorrect Answers: <span id="numWrong"></span></p>
+					<p>Answers Timed Out: <span id="numTimedOut"></span></p></h3>
 				</div>
+				<div class="col-md-6">
+					<h3><p>Your Percentage Correct:<span id="percentCorrect"></span></p>
+					<p>Your Percentage Incorrect:<span id="percentIncorrect"></span></p>
+					<p>Your Final Grade:<span id="finalGrade"></span></p></h3>
 				</div>
 			</div>
 
 			<div class="modal-footer">
 				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				<button type="button"  class="startModalClass btn btn-default" data-dismiss="modal">Play Again?</button>
 			</div>
 		</div>
 	</div>
