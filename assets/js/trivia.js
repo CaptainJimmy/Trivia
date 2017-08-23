@@ -1,4 +1,7 @@
 $(document).ready(function(){
+	$("body").on("click", ".answer-button", verifyAnswer(this.id));
+
+
 // variables used in the HTML
 var jumbotronMessage;
 var questionOutput;
@@ -63,20 +66,17 @@ var triviaQuestion = [
 
 ];
 
-//console.log(triviaQuestion[1].question + " " + triviaQuestion[1].answers[0].answer + " " + triviaQuestion[1].answers[0].isCorrect);
-
-
-
-
 // functions
 
 // create the question  list from the object array
 function startModal(){
+	console.log("startmodal");
 	 $("#startModal").modal();
 	$("#startModalButton").on("click",startGame());
 }
 
 function startGame(){
+	console.log("startGame");
 $("#jumbotronMessage").text("Good Luck, Stupid");
 questionsLeft=triviaQuestion.length;
 numWrong=0;
@@ -86,20 +86,27 @@ updateScore();
 }
 
 function updateScore(){
+	console.log("updateScore");
 	$("#questionsLeft").text(questionsLeft);
 	nextQuestion();
 }
 
 function nextQuestion(){
-
+console.log("nextQuestion");
 	if (questionsLeft <= triviaQuestion.length ) {
-			questionOutput=triviaQuestion[questionsLeft].question;
+		console.log("IF LOOP");
+			questionOutput=triviaQuestion[questionsLeft-1];
 			// Grab A question From The List
-			$("#question").text(questionOutput);
+			$("#question").text(questionOutput.question);
 			// display the question and the answers as buttons
-			for (var i=0; i <= triviaQuestion[questionsLeft].answers.length; i++){
-				console.log('<button class="btn btn-default btn-lg normal-button" id="' + i + '">' + triviaQuestion.answers[i].answer + ' </button>')
-				$("#answers").append('<button class="btn btn-default btn-lg normal-button answer-button" id="' + i + '">' + triviaQuestion.answers[i].answer + ' </button>');
+			//console.log(questionOutput);
+//			for (var i=0; i <= triviaQuestion[questionsLeft-1].answers.length; i++){
+			$('#answers').text("");
+			for (var i=0; i < questionOutput.answers.length; i++){
+				// console.log(i);
+				// console.log(questionOutput.answers[i]);
+				// console.log('<button class="btn btn-default btn-lg normal-button" id="' + i + '">' + triviaQuestion.answers[i].answer + ' </button>');
+				$("#answers").append('<button class="btn btn-default btn-lg normal-button answer-button" id="' + i + '">' + questionOutput.answers[i].answer + ' </button>');
 				
 				}
 			//start the timer
@@ -107,18 +114,18 @@ function nextQuestion(){
 				setInterval(countDown, 1000);
 			//while the timer is running:
 			// if statement to find if the answer picked isCorrect?
-				$(".answer-button").on("click", verifyAnswer(this.id));
+				
 			
 		}
 	else {
-	// if there are no questions, end the game and display the game over Modal
+	// if thereclearInterval(countdown); are no questions, end the game and display the game over Modal
 
 		endingScore();
 	}
 }
 function isCorrect(){
 	//if the answer is correct, numCorrect++, questionsLeft--, then display the next question if applicable
-
+	console.log("isCorrect");
 	$("#jumbotronMessage").text("Well done, sir");
 	numCorrect++;
 	questionsLeft--;
@@ -127,7 +134,7 @@ function isCorrect(){
 
 function isWrong(){
 	// if the answer is incorrect, numWrong++, questionsLeft--, then display the next quesion if applicable
-
+	console.log("isWrong");
 	$("#jumbotronMessage").text("Good one, jackass. Try harder.");
 	numWrong++;
 	questionsLeft--;
@@ -135,8 +142,8 @@ function isWrong(){
 }
 
 function timeRanOut(){
+	console.log("timeRanOut");
 	//if the answer times out, timedOut++, questionsLeft--, then display the next question if applicable
-
 	$("#jumbotronMessage").text("Work Faster. Quit texting your mother.");
 	numTimedOut++;
 	questionsLeft--;
@@ -144,41 +151,46 @@ function timeRanOut(){
 }
 
 function countDown(){
-
 	$("#timer").text(timer);
 	// timer runs out, timeRanOut();
 	//if the answer times out, timedOut++, questionsLeft--, then display the next question if applicable
 
 	if (timer === 0){
 		timeRanOut();
+
 		}
+	timer--;
 }
 
 function verifyAnswer(buttonClicked){
+		console.log("verifyAnswer");
 	// find out if the answer picked is correct
+	//console.log(questionOutput.answers[buttonClicked].isCorrect);
+	$("#message").text("TESTING");
+	// if (questionOutput.answers[buttonClicked].isCorrect) {
+	// 	//if the answer is correct, numCorrect++, questionsLeft--, then display the next question if applicable
 
-	if (triviaQuestion[questionsLeft].answers[buttonClicked].isCorrect){
-		//if the answer is correct, numCorrect++, questionsLeft--, then display the next question if applicable
+	// 	isCorrect();
+	// }
+	// else if (!questionOutput.answers[buttonClicked].isCorrect){
+	// 	// if the answer is incorrect, numWrong++, questionsLeft--, then display the next quesion if applicable
 
-		isCorrect();
-	}
-	else if (!triviaQuestion[questionsLeft].answers[buttonClicked].isCorrect){
-		// if the answer is incorrect, numWrong++, questionsLeft--, then display the next quesion if applicable
-
-		isWrong();
-	}
+	// 	isWrong();
+	// }
 	
-	else {
-		console.log("ERROR IN verifyAnswer!");
-		$("#jumbotronMessage").text("Error in verifyAnswer");
+	// else {
+	// 	console.log("ERROR IN verifyAnswer!");
+	// 	$("#jumbotronMessage").text("Error in verifyAnswer");
 
-	}
+	// }
 
 }
 
 
 function endingScore(){
 	//pop out the score board modal
+	console.log("ENDING SCORE");
+	clearInterval(countdown);
  	$("#scoreModal").modal();
  	$("#numCorrect").text(numCorrect);
  	$("#numWrong").text(numWrong);
@@ -186,9 +198,10 @@ function endingScore(){
 }
 
 
+//$("body").on("click", ".answer-button", verifyAnswer(this.id));
 //TESTING: starting the game with no modal
-startGame();
+//startGame();
 
 // Start the game with startModal
-//startModal();
+startModal();
 });
