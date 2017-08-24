@@ -29,20 +29,25 @@
 </div>
 
 <div id="startModal" class="modal" role="dialog">
-	<div class="modal-dialog">
+	<div class="modal-dialog modal-lg">
 		<div class="modal-content">
 			<div class="modal-header"><button class="close" type="button" data-dismiss="modal"></button>
 			</div>
 
-			<div class="modal-body">
-			<div class="row">
-				<div class="col-med-12">
-				Click the start button!
-				<button id="startModalButton" type="button" class="startModalClass btn btn-default" data-dismiss="modal">Start!</button>
-				</div>
+			<div class="modal-body modal-body-startModal">
+				<div class="row">
+					<div class="col-md-4">
+						<h3> Test your knowledge of Game of Thrones with some trivia. </h3>
+					</div>
+					
+					<div class="col-md-4"></div>
+				
+					<div class="col-md-4">
+						<p>Click the start button!</p>
+						<button id="startModalButton" type="button" class="startModalClass btn btn-default" data-dismiss="modal">Start!</button>
+					</div>
 				</div>
 			</div>
-
 			<div class="modal-footer">
 			</div>
 		</div>
@@ -55,19 +60,20 @@
 			<div class="modal-header"><button class="close" type="button" data-dismiss="scoreModal"></button>
 			</div>
 
-			<div class="modal-body">
+			<div class="modal-body modal-body-scoreModal">
 			<div class="row">
-				<div class="col-md-6">
+				<div class="col-md-4">
 					
-					<h3><div id="modalMessage"></div>
+					<h4><div id="modalMessage"></div>
 					<p>Correct Answers: <span id="numCorrect"></span></p>
 					<p>Incorrect Answers: <span id="numWrong"></span></p>
-					<p>Answers Timed Out: <span id="numTimedOut"></span></p></h3>
+					<p>Answers Timed Out: <span id="numTimedOut"></span></p></h4>
 				</div>
-				<div class="col-md-6">
-					<h3><p>Your Percentage Correct:<span id="percentCorrect"></span></p>
+				<div class="col-md-4"></div>
+				<div class="col-md-4">
+					<h4><p>Your Percentage Correct:<span id="percentCorrect"></span></p>
 					<p>Your Percentage Incorrect:<span id="percentIncorrect"></span></p>
-					<p>Your Final Grade:<span id="finalGrade"></span></p></h3>
+					<p>Your Final Grade:<span id="finalGrade"></span></p></h4>
 				</div>
 			</div>
 
